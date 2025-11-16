@@ -63,19 +63,11 @@ export function VideoHeroSection({ onShopNow, onDiscoverMore }: VideoHeroSection
             className="space-y-8"
           >
             {/* Logo/Brand */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="flex justify-center mb-8"
-            >
-              <div className="relative">
-                <div className="w-24 h-24 bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500 rounded-3xl flex items-center justify-center shadow-2xl">
-                  <span className="text-white text-5xl">F</span>
-                </div>
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full animate-pulse"></div>
-              </div>
-            </motion.div>
+            {/* <img
+              src={fireupLogo}
+              alt="Fire Up logo"
+              className="h-10 w-auto"
+            /> */}
 
             <h1
               className="text-6xl md:text-8xl lg:text-9xl uppercase tracking-tight text-white drop-shadow-2xl"
