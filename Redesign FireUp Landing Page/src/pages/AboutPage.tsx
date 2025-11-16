@@ -1,0 +1,329 @@
+import { motion } from 'motion/react';
+import { Flame, Target, Users, Zap, Award, Rocket, Heart, TrendingUp } from 'lucide-react';
+import { Card } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+
+export function AboutPage() {
+  const timeline = [
+    { year: '2020', title: 'The Spark', description: 'Fire Up was born from a simple idea: create an energy drink that fuels ambition without compromise.' },
+    { year: '2021', title: 'Formula Perfected', description: 'After 500+ iterations, we crafted the perfect blend of natural caffeine, vitamins, and zero sugar.' },
+    { year: '2022', title: 'First Launch', description: 'Launched in 50 gyms across the country. Athletes immediately fell in love with the taste and energy.' },
+    { year: '2023', title: 'Going National', description: 'Expanded to 1,000+ retail locations. Fire Up became the #1 choice for fitness enthusiasts.' },
+    { year: '2024', title: 'Global Vision', description: 'Crossed 10 million cans sold. Now available in 5 countries with plans for worldwide expansion.' },
+  ];
+
+  const values = [
+    {
+      icon: Flame,
+      title: 'Passion First',
+      description: 'We\'re obsessed with creating the best energy drink. Every detail matters.',
+      color: 'from-orange-500 to-red-600'
+    },
+    {
+      icon: Heart,
+      title: 'Health Conscious',
+      description: 'Zero sugar, natural ingredients. Fuel your body right without the crash.',
+      color: 'from-red-500 to-pink-600'
+    },
+    {
+      icon: Users,
+      title: 'Community Driven',
+      description: 'Built by athletes, for athletes. Your feedback shapes our future.',
+      color: 'from-purple-500 to-pink-600'
+    },
+    {
+      icon: Zap,
+      title: 'Performance Focused',
+      description: 'Engineered for peak performance. Every ingredient has a purpose.',
+      color: 'from-yellow-500 to-orange-600'
+    },
+  ];
+
+  const stats = [
+    { icon: Users, value: '50K+', label: 'Happy Customers' },
+    { icon: Award, value: '15+', label: 'Industry Awards' },
+    { icon: Rocket, value: '10M+', label: 'Cans Sold' },
+    { icon: TrendingUp, value: '5', label: 'Countries' },
+  ];
+
+  return (
+    <div className="min-h-screen bg-black">
+      {/* Hero Section */}
+      <section className="relative pt-44 pb-20 overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-red-900/20 via-black to-black"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 mb-6">
+              About Fire Up
+            </Badge>
+            <h1 className="text-5xl md:text-7xl uppercase mb-6 text-white">
+              Fueling <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Champions</span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-8">
+              We're not just an energy drink company. We're a movement of dreamers, doers, and game-changers who refuse to settle for anything less than extraordinary.
+            </p>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-16"
+          >
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <Card key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 p-6 text-center">
+                  <Icon className="w-8 h-8 text-orange-400 mx-auto mb-3" />
+                  <div className="text-3xl bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-gray-400">{stat.label}</div>
+                </Card>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Our Story Section */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 mb-4">
+                Our Story
+              </Badge>
+              <h2 className="text-4xl md:text-5xl text-white uppercase mb-6">
+                Born from <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Passion</span>
+              </h2>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  It started in a small garage in 2020. Three athletes frustrated with sugary, crash-inducing energy drinks decided to create something better. Something that actually worked.
+                </p>
+                <p>
+                  After countless late nights, 500+ formula tests, and feedback from professional athletes, Fire Up was born. A zero-sugar energy drink that delivers real, sustained energy without the jitters or crash.
+                </p>
+                <p>
+                  Today, Fire Up powers millions of people worldwide – from elite athletes breaking records to entrepreneurs building empires. We're proof that when you refuse to compromise, magic happens.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="relative rounded-2xl overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwbWVldGluZyUyMGVuZXJneXxlbnwxfHx8fDE3NjAzMzUyNzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  alt="Team"
+                  className="w-full h-auto rounded-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 mb-4">
+              Our Values
+            </Badge>
+            <h2 className="text-4xl md:text-5xl text-white uppercase mb-4">
+              What We Stand For
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              These aren't just words on a wall. They're the principles that guide every decision we make.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {values.map((value, index) => {
+              const Icon = value.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 p-6 hover:border-orange-500/30 transition-all duration-300 h-full">
+                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${value.color} flex items-center justify-center mb-4`}>
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-white mb-2">{value.title}</h3>
+                    <p className="text-gray-400 text-sm">{value.description}</p>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 mb-4">
+              Our Journey
+            </Badge>
+            <h2 className="text-4xl md:text-5xl text-white uppercase mb-4">
+              The Fire Up Timeline
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              From a garage startup to a global movement. Here's how we got here.
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto">
+            {timeline.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative mb-12 last:mb-0"
+              >
+                <div className="flex items-start gap-6">
+                  {/* Year Badge */}
+                  <div className="flex-shrink-0">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                      <span className="text-white">{item.year}</span>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <Card className="flex-1 bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 p-6 hover:border-orange-500/30 transition-all">
+                    <h3 className="text-white mb-2">{item.title}</h3>
+                    <p className="text-gray-400 text-sm">{item.description}</p>
+                  </Card>
+                </div>
+
+                {/* Connecting Line */}
+                {index < timeline.length - 1 && (
+                  <div className="absolute left-10 top-20 w-0.5 h-12 bg-gradient-to-b from-orange-500 to-transparent"></div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Section with Image */}
+      <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="relative rounded-2xl overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3VudGFpbiUyMGFkdmVudHVyZXxlbnwxfHx8fDE3NjAzMzUyNzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  alt="Mission"
+                  className="w-full h-auto rounded-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <Target className="w-8 h-8 text-orange-400" />
+                <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30">
+                  Our Mission
+                </Badge>
+              </div>
+              <h2 className="text-4xl md:text-5xl text-white uppercase mb-6">
+                Empowering <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Dreams</span>
+              </h2>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  Our mission is simple: empower people to achieve their biggest dreams by providing clean, sustained energy that actually works.
+                </p>
+                <p>
+                  We believe that what you put in your body matters. That's why every can of Fire Up is crafted with premium ingredients, zero sugar, and a relentless commitment to quality.
+                </p>
+                <p>
+                  Whether you're an athlete chasing gold, an entrepreneur building the next big thing, or a student pulling an all-nighter – Fire Up is here to fuel your journey.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 via-red-600/20 to-yellow-600/20 blur-3xl"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h2 className="text-4xl md:text-6xl text-white uppercase mb-6">
+              Join the <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Movement</span>
+            </h2>
+            <p className="text-xl text-gray-300 mb-8">
+              Be part of a community that's redefining what's possible. Your journey starts now.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}

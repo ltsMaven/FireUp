@@ -1,0 +1,100 @@
+import { Instagram, Twitter, Facebook, Mail } from 'lucide-react';
+
+interface FooterProps {
+  onNavigate: (page: 'home' | 'about' | 'contact') => void;
+}
+
+export function Footer({ onNavigate }: FooterProps) {
+  const handleNavClick = (page: 'home' | 'about' | 'contact', section?: string) => {
+    onNavigate(page);
+    
+    if (section) {
+      // Scroll to section after navigation
+      setTimeout(() => {
+        document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+  return (
+    <footer id="contact" className="bg-black border-t border-white/10 py-12">
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500 rounded-lg flex items-center justify-center">
+                <span className="text-white">F</span>
+              </div>
+              <div>
+                <h3 className="text-white uppercase">Fire Up</h3>
+                <p className="text-xs text-orange-400">Energy Drink</p>
+              </div>
+            </div>
+            <p className="text-gray-400 mb-4 max-w-md">
+              Ignite your potential with FireUp – the ultimate energy drink for champions who refuse to settle.
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors">
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-white mb-4">Quick Links</h4>
+            <ul className="space-y-2">
+              <li>
+                <button onClick={() => handleNavClick('home')} className="text-gray-400 hover:text-orange-400 transition-colors">Home</button>
+              </li>
+              <li>
+                <button onClick={() => handleNavClick('home', 'product')} className="text-gray-400 hover:text-orange-400 transition-colors">Product</button>
+              </li>
+              <li>
+                <button onClick={() => handleNavClick('about')} className="text-gray-400 hover:text-orange-400 transition-colors">About Us</button>
+              </li>
+              <li>
+                <button onClick={() => handleNavClick('contact')} className="text-gray-400 hover:text-orange-400 transition-colors">Contact</button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h4 className="text-white mb-4">Support</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">FAQ</a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">Shipping</a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">Returns</a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10 pt-8 text-center text-gray-400 text-sm">
+          <p>&copy; 2025 Fire Up Energy Drink. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
