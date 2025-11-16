@@ -7,7 +7,7 @@ import { ContactPage } from './pages/ContactPage';
 import { Footer } from './components/Footer';
 import { CartDrawer } from './components/CartDrawer';
 import { Toaster } from './components/ui/sonner';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 interface CartItem {
   id: string;
@@ -94,6 +94,7 @@ export default function App() {
         <HomePage 
           onAddToCart={handleAddToCart}
           scrollToProduct={scrollToProduct}
+          onDiscoverMore={() => handleNavigate('about')}
         />
       ) : currentPage === 'about' ? (
         <AboutPage />

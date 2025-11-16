@@ -8,12 +8,13 @@ import { CTASection } from '../components/CTASection';
 interface HomePageProps {
   onAddToCart: (quantity: number) => void;
   scrollToProduct: () => void;
+  onDiscoverMore: () => void;
 }
 
-export function HomePage({ onAddToCart, scrollToProduct }: HomePageProps) {
+export function HomePage({ onAddToCart, scrollToProduct, onDiscoverMore }: HomePageProps) {
   return (
     <>
-      <VideoHeroSection onShopNow={scrollToProduct} />
+      <VideoHeroSection onShopNow={scrollToProduct}  onDiscoverMore={onDiscoverMore}  />
       <CTASection onShopNow={scrollToProduct} />
       <BenefitsSection />
       <ProductSection onAddToCart={onAddToCart} />

@@ -7,7 +7,7 @@ import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import { Label } from '../components/ui/label';
 import { useState } from 'react';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 export function ContactPage() {
   const [formData, setFormData] = useState({
@@ -38,13 +38,6 @@ export function ContactPage() {
       detail: '+1 (555) 123-4567',
       description: 'Mon-Fri from 8am to 6pm',
       color: 'from-green-500 to-emerald-600'
-    },
-    {
-      icon: MapPin,
-      title: 'Visit Us',
-      detail: '123 Energy Street, LA, CA 90028',
-      description: 'Come say hi at our HQ',
-      color: 'from-orange-500 to-red-600'
     },
     {
       icon: Clock,
@@ -108,7 +101,7 @@ export function ContactPage() {
       {/* Contact Methods */}
       <section className="py-20 relative">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-20 justify-items-center">
             {contactMethods.map((method, index) => {
               const Icon = method.icon;
               return (
@@ -132,7 +125,6 @@ export function ContactPage() {
             })}
           </div>
 
-          {/* Contact Form & Info Grid */}
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Form */}
             <motion.div
@@ -212,7 +204,6 @@ export function ContactPage() {
               </Card>
             </motion.div>
 
-            {/* Support Info & Image */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -302,37 +293,6 @@ export function ContactPage() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Map Section (Placeholder) */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]"></div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
-          >
-            <Card className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 p-8 text-center">
-              <MapPin className="w-12 h-12 text-orange-400 mx-auto mb-4" />
-              <h2 className="text-white text-2xl uppercase mb-4">Visit Our Headquarters</h2>
-              <p className="text-gray-300 mb-2">123 Energy Street, Los Angeles, CA 90028</p>
-              <p className="text-gray-400 text-sm mb-6">Open Monday - Friday, 9am - 5pm PST</p>
-              
-              {/* Map Placeholder */}
-              <div className="w-full h-64 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl border border-orange-500/20 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-16 h-16 text-orange-400 mx-auto mb-2" />
-                  <p className="text-gray-400">Map Integration</p>
-                  <p className="text-gray-500 text-sm">Interactive map would go here</p>
-                </div>
-              </div>
-            </Card>
-          </motion.div>
         </div>
       </section>
     </div>

@@ -43,7 +43,6 @@ export function AboutPage() {
     { icon: Users, value: '50K+', label: 'Happy Customers' },
     { icon: Award, value: '15+', label: 'Industry Awards' },
     { icon: Rocket, value: '10M+', label: 'Cans Sold' },
-    { icon: TrendingUp, value: '5', label: 'Countries' },
   ];
 
   return (
@@ -74,18 +73,19 @@ export function AboutPage() {
               We're not just an energy drink company. We're a movement of dreamers, doers, and game-changers who refuse to settle for anything less than extraordinary.
             </p>
           </motion.div>
-
-          {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-16"
+            className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-16 justify-items-center"
           >
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
-                <Card key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 p-6 text-center">
+                <Card
+                  key={index}
+                  className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 p-6 text-center"
+                >
                   <Icon className="w-8 h-8 text-orange-400 mx-auto mb-3" />
                   <div className="text-3xl bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent mb-1">
                     {stat.value}
@@ -98,7 +98,6 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Our Story Section */}
       <section className="py-20 relative">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">

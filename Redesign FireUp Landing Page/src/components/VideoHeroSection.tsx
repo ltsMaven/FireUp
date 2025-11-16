@@ -5,9 +5,11 @@ import { useState, useRef, useEffect } from 'react';
 
 interface VideoHeroSectionProps {
   onShopNow: () => void;
+  onDiscoverMore: () => void;
+
 }
 
-export function VideoHeroSection({ onShopNow }: VideoHeroSectionProps) {
+export function VideoHeroSection({ onShopNow, onDiscoverMore }: VideoHeroSectionProps) {
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -75,16 +77,17 @@ export function VideoHeroSection({ onShopNow }: VideoHeroSectionProps) {
               </div>
             </motion.div>
 
-            {/* Main Heading */}
-            <h1 className="text-6xl md:text-8xl lg:text-9xl uppercase tracking-tight text-white drop-shadow-2xl">
+            <h1
+              className="text-6xl md:text-8xl lg:text-9xl uppercase tracking-tight text-white drop-shadow-2xl"
+              style={{ fontWeight: 700 }} 
+            >
               <span className="block mb-2">Fire Up</span>
             </h1>
             
             <p className="text-xl md:text-3xl text-white/90 max-w-3xl mx-auto drop-shadow-lg uppercase tracking-widest">
-              Ignite Your Energy
+              The world is yours
             </p>
 
-            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -100,11 +103,11 @@ export function VideoHeroSection({ onShopNow }: VideoHeroSectionProps) {
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               
-              <Button 
+              <Button
                 size="lg"
-                variant="outline"
-                className="border-white/40 text-white hover:bg-white/20 backdrop-blur-sm text-lg px-8 py-6"
-                onClick={() => document.getElementById('product')?.scrollIntoView({ behavior: 'smooth' })}
+                variant="default"
+                className="bg-orange-500 text-white hover:bg-orange-600 shadow-lg text-lg px-8 py-6"
+                onClick={onDiscoverMore}
               >
                 Discover More
               </Button>
