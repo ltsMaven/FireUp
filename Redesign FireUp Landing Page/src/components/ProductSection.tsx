@@ -12,6 +12,10 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from './ui/carousel';
+import productImage1 from '../assets/product-image-1.png';
+import productImage2 from '../assets/product-image-2.png';
+import productImage3 from '../assets/product-image-3.png';
+import productImage4 from '../assets/product-image-4.png';
 
 interface ProductSectionProps {
   onAddToCart: (quantity: number) => void;
@@ -25,20 +29,16 @@ export function ProductSection({ onAddToCart }: ProductSectionProps) {
 
   const productImages = [
     {
-      url: 'https://images.unsplash.com/photo-1741519735476-cfc8bf0b2ae4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmVyZ3klMjBkcmluayUyMGNhbiUyMHJlZHxlbnwxfHx8fDE3NjMyMzE2NDF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      alt: 'Fire Up Can - Front View',
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1636403724733-0fa0f7acb324?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmVyZ3klMjBkcmluayUyMGNsb3NlJTIwdXB8ZW58MXx8fHwxNzYzMzAxOTAwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      url: productImage2,
       alt: 'Fire Up Can - Close Up',
     },
     {
-      url: 'https://images.unsplash.com/photo-1649616902466-afca42c066da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmVyZ3klMjBkcmluayUyMGxpZmVzdHlsZXxlbnwxfHx8fDE3NjMzMDE5MDF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      alt: 'Fire Up Can - Lifestyle',
+      url: productImage3,
+      alt: 'Fire Up Can - Close Up',
     },
     {
-      url: 'https://images.unsplash.com/photo-1674834726923-3ba828d37846?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmVyZ3klMjBkcmluayUyMHdvcmtvdXR8ZW58MXx8fHwxNzYzMzAxOTAxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      alt: 'Fire Up Can - Workout',
+      url: productImage4,
+      alt: 'Fire Up Can - Close Up',
     },
   ];
 
@@ -106,11 +106,17 @@ export function ProductSection({ onAddToCart }: ProductSectionProps) {
               <CarouselContent>
                 {productImages.map((image, index) => (
                   <CarouselItem key={index}>
-                    <div className="relative h-96 flex items-center justify-center">
-                      <img 
+                    <div className="relative h-96 flex items-center justify-center overflow-hidden rounded-2xl">
+                      <img
                         src={image.url}
                         alt={image.alt}
-                        className="max-h-full w-auto object-contain drop-shadow-2xl rounded-xl"
+                        className="
+                          max-h-72 md:max-h-80   /* <— smaller than h-96 so it 'zooms out' */
+                          w-auto
+                          object-contain
+                          drop-shadow-2xl
+                          rounded-xl
+                        "
                       />
                     </div>
                   </CarouselItem>

@@ -28,10 +28,6 @@ export function AnnouncementBanner() {
                 <span className="hidden sm:inline">Tropical Thunder launching December 2025</span>
                 <span className="sm:hidden">Coming Dec 2025</span>
                 <span className="mx-2">•</span>
-                <button className="underline underline-offset-2 hover:text-yellow-200 transition-colors inline-flex items-center gap-1">
-                  Join Waitlist
-                  <ArrowRight className="w-3 h-3" />
-                </button>
               </p>
               <button
                 onClick={() => setIsVisible(false)}

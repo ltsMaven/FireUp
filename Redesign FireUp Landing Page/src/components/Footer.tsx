@@ -1,4 +1,5 @@
-import { Instagram, Twitter, Facebook, Mail } from 'lucide-react';
+import { Instagram, Mail } from 'lucide-react';
+import { FaTiktok } from 'react-icons/fa';
 
 interface FooterProps {
   onNavigate: (page: 'home' | 'about' | 'contact') => void;
@@ -37,14 +38,17 @@ export function Footer({ onNavigate }: FooterProps) {
               Ignite your potential with FireUp – the ultimate energy drink for champions who refuse to settle.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors">
+              <a href="https://www.instagram.com/drinkfireup?igsh=dGcxc3hmcmU4dHJr" className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors">
-                <Facebook className="w-5 h-5" />
+              <a
+                href="https://www.tiktok.com/@drinkfireup"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Fire Up on TikTok"
+                className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors"
+              >
+                <FaTiktok className="w-5 h-5" />
               </a>
               <a href="#" className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors">
                 <Mail className="w-5 h-5" />
@@ -71,21 +75,15 @@ export function Footer({ onNavigate }: FooterProps) {
             </ul>
           </div>
 
-          {/* Support */}
           <div>
             <h4 className="text-white mb-4">Support</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">FAQ</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">Shipping</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">Returns</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">Privacy Policy</a>
+                <button
+                  onClick={() => handleNavClick('contact', 'faq')} className="text-gray-400 hover:text-orange-400 transition-colors"
+                >
+                  FAQ
+                </button>
               </li>
             </ul>
           </div>

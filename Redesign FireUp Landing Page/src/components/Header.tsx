@@ -2,6 +2,7 @@ import { ShoppingCart, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { useState } from 'react';
+import fireUpLogo from '../assets/fireup-logo.png';
 
 interface HeaderProps {
   cartCount: number;
@@ -35,10 +36,18 @@ export function Header({ cartCount, onCartClick, currentPage, onNavigate }: Head
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-black text-xl">F</span>
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
+              <img
+                src={fireUpLogo}
+                alt="Fire Up logo"
+                className="
+                  w-10 h-10 md:w-12 md:h-12
+                  rounded-xl
+                  object-cover
+                  shadow-lg
+                  border border-white/20
+                "
+              />
+              <div className="absolute -bottom-1 -right-1 w-3 h-3 md:w-4 md:h-4 bg-yellow-400 rounded-full animate-pulse"></div>
             </div>
             <div>
               <h1 className="text-white uppercase tracking-wider">Fire Up</h1>
