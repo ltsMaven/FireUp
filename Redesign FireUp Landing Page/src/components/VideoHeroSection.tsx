@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { ArrowRight, Volume2, VolumeX, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState, useRef, useEffect } from 'react';
+import fireUpLogo from '../assets/fireup-logo.png';
 
 interface VideoHeroSectionProps {
   onShopNow: () => void;
@@ -62,13 +63,24 @@ export function VideoHeroSection({ onShopNow, onDiscoverMore }: VideoHeroSection
             transition={{ duration: 1, delay: 0.3 }}
             className="space-y-8"
           >
-            {/* Logo/Brand */}
-            {/* <img
-              src={fireupLogo}
-              alt="Fire Up logo"
-              className="h-10 w-auto"
-            /> */}
-
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="flex justify-center mb-8"
+            >
+              <img
+                src={fireUpLogo}
+                alt="Fire Up logo"
+                className="
+                  h-24 w-24 md:h-32 md:w-32
+                  rounded-xl
+                  object-cover
+                  shadow-2xl
+                  border border-white/20
+                "
+              />
+            </motion.div>
             <h1
               className="text-6xl md:text-8xl lg:text-9xl uppercase tracking-tight text-white drop-shadow-2xl"
               style={{ fontWeight: 700 }} 

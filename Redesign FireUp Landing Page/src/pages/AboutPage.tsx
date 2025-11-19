@@ -1,15 +1,42 @@
 import { motion } from 'motion/react';
-import { Flame, Target, Users, Zap, Award, Rocket, Heart, TrendingUp } from 'lucide-react';
+import { Flame, Target, Users, Zap, Award, Rocket, Heart, TrendingUp, Play, Instagram, Twitter } from 'lucide-react';
 import { Card } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
+import aboutUsImage from '../assets/about-us.png';
 
 export function AboutPage() {
+
+  const contentShowcase = [
+    {
+      type: 'video',
+      title: 'Training with Champions',
+      description: 'Watch how elite athletes fuel their performance',
+      image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+      size: 'large',
+      category: 'Video'
+    },
+    {
+      type: 'post',
+      title: '10M Cans Milestone',
+      description: 'Celebrating 10 million cans sold worldwide! Thank you to our amazing community.',
+      image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+      size: 'medium',
+      category: 'Milestone'
+    },
+    {
+      type: 'social',
+      title: 'Community Love',
+      description: 'Your stories fuel us! Share your Fire Up moments #FireUpEnergy',
+      image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+      size: 'medium',
+      category: 'Community'
+    }
+  ];
+
   const timeline = [
-    { year: '2020', title: 'The Spark', description: 'Fire Up was born from a simple idea: create an energy drink that fuels ambition without compromise.' },
-    { year: '2021', title: 'Formula Perfected', description: 'After 500+ iterations, we crafted the perfect blend of natural caffeine, vitamins, and zero sugar.' },
-    { year: '2022', title: 'First Launch', description: 'Launched in 50 gyms across the country. Athletes immediately fell in love with the taste and energy.' },
-    { year: '2023', title: 'Going National', description: 'Expanded to 1,000+ retail locations. Fire Up became the #1 choice for fitness enthusiasts.' },
-    { year: '2024', title: 'Global Vision', description: 'Crossed 10 million cans sold. Now available in 5 countries with plans for worldwide expansion.' },
+    { year: '2024', title: 'The Foundation', description: 'Fire Up established its presence in the energy drink market with our signature zero-sugar formula and bold brand identity.' },
+    { year: '2025', title: 'Explosive Growth', description: 'Currently expanding nationwide with 1,000+ retail locations. Launched our new Tropical Thunder flavor and hit 10 million cans sold milestone.' },
+    { year: '2026', title: 'Global Domination', description: 'Planning international expansion to 15+ countries. New product lines and revolutionary packaging innovations on the horizon.' },
   ];
 
   const values = [
@@ -133,9 +160,9 @@ export function AboutPage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="relative rounded-2xl overflow-hidden">
+              <div className="relative rounded-2xl overflow-hidden max-w-md w-full">
                 <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwbWVldGluZyUyMGVuZXJneXxlbnwxfHx8fDE3NjAzMzUyNzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  src={aboutUsImage}
                   alt="Team"
                   className="w-full h-auto rounded-2xl"
                 />
@@ -244,6 +271,87 @@ export function AboutPage() {
                 {index < timeline.length - 1 && (
                   <div className="absolute left-10 top-20 w-0.5 h-12 bg-gradient-to-b from-orange-500 to-transparent"></div>
                 )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 mb-4">
+              Our Content
+            </Badge>
+            <h2 className="text-4xl md:text-5xl text-white uppercase mb-4">
+              Fire Up in Action
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Explore our latest content, stories, and moments from the Fire Up community.
+            </p>
+          </motion.div>
+
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {contentShowcase.map((content, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group relative overflow-hidden rounded-2xl"
+              >
+                <Card className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 overflow-hidden hover:border-orange-500/30 transition-all duration-300 cursor-pointer" style={{ aspectRatio: '9/16' }}>
+                  {/* Image Container */}
+                  <div className="relative h-full overflow-hidden">
+                    <img
+                      src={content.image}
+                      alt={content.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+
+                    {/* Video Play Button */}
+                    {content.type === 'video' && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-16 h-16 rounded-full bg-orange-500/80 flex items-center justify-center group-hover:bg-orange-500 transition-colors duration-300 group-hover:scale-110 transform">
+                          <Play className="w-8 h-8 text-white ml-1" fill="white" />
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Content Details */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <Badge className="bg-orange-500/80 text-white border-0 mb-3">
+                        {content.category}
+                      </Badge>
+                      <h3 className="text-white mb-2">{content.title}</h3>
+                      <p className="text-gray-300 text-sm line-clamp-2">{content.description}</p>
+                    </div>
+
+                    {/* Social Icons for Social Type */}
+                    {content.type === 'social' && (
+                      <div className="absolute top-4 right-4 flex gap-2">
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                          <Instagram className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                          <Twitter className="w-5 h-5 text-white" />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </Card>
               </motion.div>
             ))}
           </div>

@@ -1,9 +1,17 @@
 import { motion } from 'motion/react';
-import { ShoppingCart, Star, Package, Shield, Zap } from 'lucide-react';
+import { ShoppingCart, Star, Package, Shield, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Card } from './ui/card';
 import { useState } from 'react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from './ui/carousel';
 
 interface ProductSectionProps {
   onAddToCart: (quantity: number) => void;
@@ -12,6 +20,27 @@ interface ProductSectionProps {
 export function ProductSection({ onAddToCart }: ProductSectionProps) {
   const [quantity, setQuantity] = useState(1);
   const [selectedPack, setSelectedPack] = useState<'single' | 'pack6' | 'pack12'>('single');
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const productImages = [
+    {
+      url: 'https://images.unsplash.com/photo-1741519735476-cfc8bf0b2ae4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmVyZ3klMjBkcmluayUyMGNhbiUyMHJlZHxlbnwxfHx8fDE3NjMyMzE2NDF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      alt: 'Fire Up Can - Front View',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1636403724733-0fa0f7acb324?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmVyZ3klMjBkcmluayUyMGNsb3NlJTIwdXB8ZW58MXx8fHwxNzYzMzAxOTAwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      alt: 'Fire Up Can - Close Up',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1649616902466-afca42c066da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmVyZ3klMjBkcmluayUyMGxpZmVzdHlsZXxlbnwxfHx8fDE3NjMzMDE5MDF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      alt: 'Fire Up Can - Lifestyle',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1674834726923-3ba828d37846?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmVyZ3klMjBkcmluayUyMHdvcmtvdXR8ZW58MXx8fHwxNzYzMzAxOTAxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      alt: 'Fire Up Can - Workout',
+    },
+  ];
 
   const packs = {
     single: { price: 3.99, cans: 1, savings: 0 },
@@ -24,6 +53,21 @@ export function ProductSection({ onAddToCart }: ProductSectionProps) {
 
   const handleAddToCart = () => {
     onAddToCart(quantity * currentPack.cans);
+  };
+
+  // Update current slide when carousel changes
+  const handleCarouselSelect = (api: CarouselApi) => {
+    if (!api) return;
+    setCarouselApi(api);
+    setCurrentSlide(api.selectedScrollSnap());
+    
+    api.on('select', () => {
+      setCurrentSlide(api.selectedScrollSnap());
+    });
+  };
+
+  const scrollToSlide = (index: number) => {
+    carouselApi?.scrollTo(index);
   };
 
   return (
@@ -46,7 +90,7 @@ export function ProductSection({ onAddToCart }: ProductSectionProps) {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Product Image */}
+          {/* Product Image Carousel */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -54,20 +98,71 @@ export function ProductSection({ onAddToCart }: ProductSectionProps) {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-3xl p-12 border border-orange-500/20">
-              <img 
-                src="https://images.unsplash.com/photo-1741519735476-cfc8bf0b2ae4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmVyZ3klMjBkcmluayUyMGNhbnxlbnwxfHx8fHwxNzYwMjcwNzQ0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Fire Up Can 355ml"
-                className="w-full max-w-sm mx-auto drop-shadow-2xl"
+          <div className="relative bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-3xl p-8 border border-orange-500/20">
+            <Carousel 
+              className="w-full max-w-sm mx-auto"
+              setApi={handleCarouselSelect}
+            >
+              <CarouselContent>
+                {productImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="relative h-96 flex items-center justify-center">
+                      <img 
+                        src={image.url}
+                        alt={image.alt}
+                        className="max-h-full w-auto object-contain drop-shadow-2xl rounded-xl"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+
+              {/* arrows beside the image */}
+              <CarouselPrevious
+                className="
+                  absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2
+                  bg-black/60 border-white/20 hover:bg-black/80 text-white
+                "
               />
-              
-              {/* Floating badge */}
-              <div className="absolute top-8 right-8 bg-yellow-400 text-black px-4 py-2 rounded-full rotate-12">
-                <span className="flex items-center gap-1">
-                  <Star className="w-4 h-4 fill-current" />
-                  <span>Best Seller</span>
-                </span>
-              </div>
+              <CarouselNext
+                className="
+                  absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2
+                  bg-black/60 border-white/20 hover:bg-black/80 text-white
+                "
+              />
+            </Carousel>
+
+            {/* Floating badge */}
+            <div className="absolute top-8 right-8 bg-yellow-400 text-black px-4 py-2 rounded-full rotate-12 z-10">
+              <span className="flex items-center gap-1">
+                <Star className="w-4 h-4 fill-current" />
+                <span>Best Seller</span>
+              </span>
+            </div>
+          </div>
+
+            {/* Thumbnail Navigation */}
+            <div className="flex gap-3 mt-6 justify-center">
+              {productImages.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollToSlide(index)}
+                  className={`relative w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                    currentSlide === index
+                      ? 'border-orange-500 scale-105'
+                      : 'border-white/20 hover:border-white/40'
+                  }`}
+                >
+                  <img 
+                    src={image.url}
+                    alt={`Thumbnail ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                  {currentSlide === index && (
+                    <div className="absolute inset-0 bg-orange-500/20" />
+                  )}
+                </button>
+              ))}
             </div>
           </motion.div>
 
@@ -101,7 +196,7 @@ export function ProductSection({ onAddToCart }: ProductSectionProps) {
               </p>
             </div>
 
-            {/* Pack Selection */}
+
             <div>
               <label className="text-white mb-3 block">Choose Your Pack</label>
               <div className="grid grid-cols-3 gap-3">
