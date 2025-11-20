@@ -8,7 +8,7 @@ interface CTASectionProps {
 
 export function CTASection({ onShopNow }: CTASectionProps) {
   return (
-    <section className="py-20 bg-black relative overflow-hidden">
+    <section id="first" className="py-20 bg-black relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 via-red-600/20 to-yellow-600/20 blur-3xl"></div>
       

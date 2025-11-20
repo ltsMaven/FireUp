@@ -7,7 +7,7 @@ export function BenefitsSection() {
     {
       icon: Zap,
       title: 'Instant Energy Boost',
-      description: '200mg of premium caffeine for immediate power when you need it most.',
+      description: '112mg of premium caffeine for immediate power when you need it most.',
       color: 'from-yellow-400 to-orange-500'
     },
     {

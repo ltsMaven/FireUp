@@ -142,13 +142,7 @@ export function AboutPage() {
               </h2>
               <div className="space-y-4 text-gray-300">
                 <p>
-                  It started in a small garage in 2020. Three athletes frustrated with sugary, crash-inducing energy drinks decided to create something better. Something that actually worked.
-                </p>
-                <p>
-                  After countless late nights, 500+ formula tests, and feedback from professional athletes, Fire Up was born. A zero-sugar energy drink that delivers real, sustained energy without the jitters or crash.
-                </p>
-                <p>
-                  Today, Fire Up powers millions of people worldwide – from elite athletes breaking records to entrepreneurs building empires. We're proof that when you refuse to compromise, magic happens.
+                Founded in 2024, Fire Up was built off the backend of a dream two 19 year old boys. To build muscle and look good. Struggling to maintain energy throughout the day and hit protein intake targets. Fire Up was born to tackle this, through natural energy, reliable protein sources﻿ and countless nutritious ingredients. Everyone can now build their dream body and look how they desire. Everything you want in life can be achieved in a can of Fire Up.
                 </p>
               </div>
             </motion.div>

@@ -1,5 +1,6 @@
 import { Instagram, Mail } from 'lucide-react';
 import { FaTiktok } from 'react-icons/fa';
+import fireUpLogo from '../assets/fireup-logo.png';
 
 interface FooterProps {
   onNavigate: (page: 'home' | 'about' | 'contact') => void;
@@ -26,9 +27,17 @@ export function Footer({ onNavigate }: FooterProps) {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500 rounded-lg flex items-center justify-center">
-                <span className="text-white">F</span>
-              </div>
+              <img
+                src={fireUpLogo}
+                alt="Fire Up logo"
+                className="
+                  w-10 h-10 md:w-12 md:h-12
+                  rounded-xl
+                  object-cover
+                  shadow-lg
+                  border border-white/20
+                "
+              />
               <div>
                 <h3 className="text-white uppercase">Fire Up</h3>
                 <p className="text-xs text-orange-400">Energy Drink</p>
@@ -38,7 +47,7 @@ export function Footer({ onNavigate }: FooterProps) {
               Ignite your potential with FireUp – the ultimate energy drink for champions who refuse to settle.
             </p>
             <div className="flex gap-4">
-              <a href="https://www.instagram.com/drinkfireup?igsh=dGcxc3hmcmU4dHJr" className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors">
+              <a href="https://www.instagram.com/drinkfireup?igsh=dGcxc3hmcmU4dHJr" target="_blank" className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
               <a
