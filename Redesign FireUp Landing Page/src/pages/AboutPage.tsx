@@ -1,36 +1,21 @@
 import { motion } from 'motion/react';
-import { Flame, Target, Users, Zap, Award, Rocket, Heart, TrendingUp, Play, Instagram, Twitter } from 'lucide-react';
+import { Flame, Target, Users, Zap, Award, Rocket, Heart, Play, Instagram } from 'lucide-react';
 import { Card } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import aboutUsImage from '../assets/about-us.png';
+import { FaTiktok } from 'react-icons/fa';
+
+import productVideo2 from '../assets/product-video-2.mov';
+import productVideo3 from '../assets/product-video-3.mov';
+import productVideo4 from '../assets/product-video-4.mov';
+
 
 export function AboutPage() {
 
-  const contentShowcase = [
-    {
-      type: 'video',
-      title: 'Training with Champions',
-      description: 'Watch how elite athletes fuel their performance',
-      image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      size: 'large',
-      category: 'Video'
-    },
-    {
-      type: 'post',
-      title: '10M Cans Milestone',
-      description: 'Celebrating 10 million cans sold worldwide! Thank you to our amazing community.',
-      image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      size: 'medium',
-      category: 'Milestone'
-    },
-    {
-      type: 'social',
-      title: 'Community Love',
-      description: 'Your stories fuel us! Share your Fire Up moments #FireUpEnergy',
-      image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      size: 'medium',
-      category: 'Community'
-    }
+    const contentShowcase = [
+    { video: productVideo2 },
+    { video: productVideo3 },
+    { video: productVideo4 },
   ];
 
   const timeline = [
@@ -272,8 +257,8 @@ export function AboutPage() {
       </section>
 
       <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]"></div>
-        
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]" />
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -285,12 +270,33 @@ export function AboutPage() {
             <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 mb-4">
               Our Content
             </Badge>
+
             <h2 className="text-4xl md:text-5xl text-white uppercase mb-4">
               Fire Up in Action
             </h2>
+
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Explore our latest content, stories, and moments from the Fire Up community.
+              See Fire Up in motion – real cans, real energy, real people.
             </p>
+
+            <div className="mt-6 flex justify-center mt-4">
+              <a
+                href="https://www.instagram.com/drinkfireup"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@drinkfireup"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Fire Up on TikTok"
+                className="w-10 h-10 bg-white/5 hover:bg-orange-500/20 rounded-full flex items-center justify-center text-white hover:text-orange-400 transition-colors"
+              >
+                <FaTiktok className="w-5 h-5" />
+              </a>
+            </div>
           </motion.div>
 
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -303,47 +309,30 @@ export function AboutPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group relative overflow-hidden rounded-2xl"
               >
-                <Card className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 overflow-hidden hover:border-orange-500/30 transition-all duration-300 cursor-pointer" style={{ aspectRatio: '9/16' }}>
-                  {/* Image Container */}
+                <Card
+                  className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 overflow-hidden hover:border-orange-500/30 transition-all duration-300 cursor-pointer"
+                  style={{ aspectRatio: '9/16' }}
+                >
                   <div className="relative h-full overflow-hidden">
-                    <img
-                      src={content.image}
-                      alt={content.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    {/* PRODUCT VIDEO */}
+                    <video
+                      src={content.video}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
 
-                    {/* Video Play Button */}
-                    {content.type === 'video' && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 rounded-full bg-orange-500/80 flex items-center justify-center group-hover:bg-orange-500 transition-colors duration-300 group-hover:scale-110 transform">
-                          <Play className="w-8 h-8 text-white ml-1" fill="white" />
-                        </div>
+                    {/* subtle dark overlay for contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
+
+                    {/* hover play icon only (no caption text) */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-14 h-14 rounded-full bg-orange-500/85 flex items-center justify-center backdrop-blur-sm">
+                        <Play className="w-7 h-7 text-white ml-1" fill="white" />
                       </div>
-                    )}
-
-                    {/* Content Details */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <Badge className="bg-orange-500/80 text-white border-0 mb-3">
-                        {content.category}
-                      </Badge>
-                      <h3 className="text-white mb-2">{content.title}</h3>
-                      <p className="text-gray-300 text-sm line-clamp-2">{content.description}</p>
                     </div>
-
-                    {/* Social Icons for Social Type */}
-                    {content.type === 'social' && (
-                      <div className="absolute top-4 right-4 flex gap-2">
-                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                          <Instagram className="w-5 h-5 text-white" />
-                        </div>
-                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                          <Twitter className="w-5 h-5 text-white" />
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </Card>
               </motion.div>

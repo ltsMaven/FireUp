@@ -3,6 +3,7 @@ import { ArrowRight, Play } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState } from 'react';
 import fireUpLogo from '../assets/fireup-logo.png';
+import productVideo from '../assets/product-video-1.mp4';
 
 interface VideoHeroSectionProps {
   onShopNow: () => void;
@@ -137,10 +138,13 @@ export function VideoHeroSection({ onShopNow, onDiscoverMore }: VideoHeroSection
                   className="relative w-full h-full group cursor-pointer"
                   onClick={() => setIsPlaying(!isPlaying)}
                 >
-                  <img
-                    src="https://images.unsplash.com/photo-1622543925917-763c34c1a6d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600"
-                    alt="Fire Up Energy Drink"
-                    className="w-full h-full object-contain p-8"
+                  <video
+                    src={productVideo}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/40 pointer-events-none" />
