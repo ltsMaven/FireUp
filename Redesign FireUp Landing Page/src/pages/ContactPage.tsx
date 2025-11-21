@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Clock, Send, MessageSquare, Headphones } from 'lucide-react';
+import { Mail, Phone, Clock, Send, MessageSquare } from 'lucide-react';
 import { Card } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
@@ -17,10 +17,31 @@ export function ContactPage() {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // ✅ Regex for name: letters + spaces only
+  const nameRegex = /^[A-Za-z\s]+$/;
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // ✅ Extra safety: check all fields are filled
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.subject.trim() ||
+      !formData.message.trim()
+    ) {
+      toast.error('Please fill in all fields before submitting.');
+      return;
+    }
+
+    // ✅ Regex validation for name
+    if (!nameRegex.test(formData.name.trim())) {
+      toast.error('Name can only contain letters and spaces.');
+      return;
+    }
+
     // Handle form submission
-    toast.success('Message sent! We\'ll get back to you within 24 hours.');
+    toast.success("Message sent! We'll get back to you within 24 hours.");
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
@@ -63,7 +84,7 @@ export function ContactPage() {
     },
     {
       question: 'What is your return policy?',
-      answer: 'We offer a 30-day money-back guarantee. If you\'re not satisfied with your purchase, contact us for a full refund.'
+      answer: "We offer a 30-day money-back guarantee. If you're not satisfied with your purchase, contact us for a full refund."
     },
   ];
 
@@ -71,7 +92,6 @@ export function ContactPage() {
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
       <section className="relative pt-44 pb-20 overflow-hidden">
-        {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-red-900/20 via-black to-black"></div>
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -89,10 +109,10 @@ export function ContactPage() {
               Get In Touch
             </Badge>
             <h1 className="text-5xl md:text-7xl uppercase mb-6 text-white">
-              Let's <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Connect</span>
+              Let&apos;s <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Connect</span>
             </h1>
             <p className="text-xl text-gray-300 mb-8">
-              Have questions? Want to partner with us? We're here to help. Reach out and let's ignite something amazing together.
+              Have questions? Want to partner with us? We&apos;re here to help. Reach out and let&apos;s ignite something amazing together.
             </p>
           </motion.div>
         </div>
@@ -101,6 +121,7 @@ export function ContactPage() {
       {/* Contact Methods */}
       <section className="py-20 relative">
         <div className="container mx-auto px-4">
+          {/* Small contact cards */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-20 justify-items-center">
             {contactMethods.map((method, index) => {
               const Icon = method.icon;
@@ -125,15 +146,15 @@ export function ContactPage() {
             })}
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Contact Form */}
+          {/* Centered contact form */}
+          <div className="max-w-4xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <Card className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 p-8">
+              <Card className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 p-8 w-full">
                 <div className="flex items-center gap-3 mb-6">
                   <MessageSquare className="w-6 h-6 text-orange-400" />
                   <h2 className="text-white text-2xl uppercase">Send us a Message</h2>
@@ -149,6 +170,9 @@ export function ContactPage() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
+                      // ✅ browser-level regex check too
+                      pattern="^[A-Za-z\s]+$"
+                      title="Name can only contain letters and spaces."
                       className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 focus:border-orange-500"
                     />
                   </div>
@@ -203,61 +227,12 @@ export function ContactPage() {
                 </form>
               </Card>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
-            >
-              {/* Support Card */}
-              <Card className="bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/20 p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <Headphones className="w-6 h-6 text-orange-400" />
-                  <h3 className="text-white text-xl">Customer Support</h3>
-                </div>
-                <div className="space-y-4 text-gray-300">
-                  <p>
-                    Our dedicated support team is here to help you with any questions or concerns.
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2"></div>
-                      <p className="text-sm">Live chat available 24/7</p>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2"></div>
-                      <p className="text-sm">Email response within 24 hours</p>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2"></div>
-                      <p className="text-sm">Phone support Mon-Fri 8am-6pm PST</p>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2"></div>
-                      <p className="text-sm">Social media support on all platforms</p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXN0b21lciUyMHNlcnZpY2UlMjBzdXBwb3J0fGVufDF8fHx8MTc2MDMzNTY1OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Customer Support"
-                  className="w-full h-64 object-cover rounded-2xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section   id="faq" className="py-20 bg-gradient-to-b from-black to-gray-900">
+      <section id="faq" className="py-20 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -273,7 +248,7 @@ export function ContactPage() {
               Frequently Asked Questions
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Quick answers to questions you may have. Can't find what you're looking for? Contact us directly.
+              Quick answers to questions you may have. Can&apos;t find what you&apos;re looking for? Contact us directly.
             </p>
           </motion.div>
 

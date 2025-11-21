@@ -3,6 +3,7 @@ import { Flame, Target, Users, Zap, Award, Rocket, Heart, Play, Instagram } from
 import { Card } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import aboutUsImage from '../assets/about-us.png';
+import productImage5 from '../assets/product-image-5.jpeg';
 import { FaTiktok } from 'react-icons/fa';
 
 import productVideo2 from '../assets/product-video-2.mov';
@@ -345,23 +346,28 @@ export function AboutPage() {
       <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            {/* Image – smaller / more contained */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative"
+              className="relative flex justify-center lg:justify-start"
             >
-              <div className="relative rounded-2xl overflow-hidden">
+              <div
+              className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10
+                bg-gradient-to-br from-white/10 to-white/[0.03] w-full max-w-xs md:max-w-sm aspect-[3/4]"
+              >
                 <img
-                  src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3VudGFpbiUyMGFkdmVudHVyZXxlbnwxfHx8fDE3NjAzMzUyNzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Mission"
-                  className="w-full h-auto rounded-2xl"
+                  src={productImage5}
+                  alt="Fire Up product"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
             </motion.div>
 
+            {/* Text */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -374,18 +380,24 @@ export function AboutPage() {
                   Our Mission
                 </Badge>
               </div>
+
               <h2 className="text-4xl md:text-5xl text-white uppercase mb-6">
-                Empowering <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Dreams</span>
+                <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+                  Quality
+                </span>{' '}
+                You Can Trust
               </h2>
+
               <div className="space-y-4 text-gray-300">
                 <p>
-                  Our mission is simple: empower people to achieve their biggest dreams by providing clean, sustained energy that actually works.
+                  At Fire Up, we ensure that all our products are authentic and carefully handled to
+                  guarantee they reach you in perfect condition. We take great care in sourcing from
+                  reputable suppliers to provide you with only the finest quality.
                 </p>
                 <p>
-                  We believe that what you put in your body matters. That's why every can of Fire Up is crafted with premium ingredients, zero sugar, and a relentless commitment to quality.
-                </p>
-                <p>
-                  Whether you're an athlete chasing gold, an entrepreneur building the next big thing, or a student pulling an all-nighter – Fire Up is here to fuel your journey.
+                  Moreover, we back our commitment with a satisfaction guarantee and a straightforward
+                  returns policy. If you&apos;re not satisfied, simply contact us, and we&apos;ll do whatever
+                  it takes to make it right.
                 </p>
               </div>
             </motion.div>
